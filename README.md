@@ -53,7 +53,7 @@ https://medicine-server-gokzn.run.goorm.io/?lat=37.57015053&lng=126.991917833999
 }
 ```
 
-GET /:hpid
+`GET /:hpid`
 
 ```json
 {
