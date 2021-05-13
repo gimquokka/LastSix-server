@@ -10,44 +10,6 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 LastSix 팀 (고동천
 
 [의약 폐기물 환경오염 현황](https://www.notion.so/88fc34bcf5f94065904721c0f1bd08ec)
 
-
-
-## Specification
-
-```markdown
-### Library ###
-- flask
-- mongoDB
-- pymongo
-- python
-
-### Open dataset ###
-1. 서울특별시*양천구*폐의약품\_수거함위치
-   (https://data.go.kr/data/15074902/fileData.do)
-2. 서울특별시 용산구\_폐의약품 수거가능위치 현황
-   (https://data.go.kr/data/15074891/fileData.do)
-3. 서울특별시 동대문구\_폐의약품 수거함 위치 현황
-   (https://data.go.kr/data/15074660/fileData.do)
-4. 서울특별시 광진구\_폐의약품 수거함 및 수집 참여 약국 현황
-   (https://data.go.kr/data/15075017/fileData.do)
-5. 서울특별시 동작구\_폐의약품 수거가능 약국현황
-   (https://data.go.kr/data/15077702/fileData.do)
-6. 서울특별시 강서구\_폐의약품 수거 약국 현황
-   (https://data.go.kr/data/15074907/fileData.do)
-7. 서울특별시 은평구\_폐의약품수거거점약국
-   (https://data.go.kr/data/15077807/fileData.do)
-8. 서울특별시 송파구\_폐의약품 수거 참여 약국 현황
-   (https://data.go.kr/data/15077652/fileData.do)
-9. 서울특별시 서대문구\_가정폐의약품 수거함 위치
-   (https://data.go.kr/data/15074855/fileData.do)
-10. 서울특별시 마포구\_불용의약품수거함
-   (https://data.go.kr/data/15074773/fileData.do)
-11. 국립중앙의료원\_전국 약국 정보 조회 서비스
-   (https://data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15000576)
-```
-
-
-
 ## Structures
 
 ```python
@@ -60,13 +22,11 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 LastSix 팀 (고동천
 └─ .gitignore
 ```
 
-
-
 ## API documentation
 
-GET /?lat=''&lng=''
+`GET /?lat=''&lng=''`
 
-```swift
+```text
 {
     "name": string, //dutyName
     "lat": number, //위도
@@ -76,9 +36,9 @@ GET /?lat=''&lng=''
 }
 ```
 
-https://medicine-server-gokzn.run.goorm.io/?lat=37.518379767474165&lng=126.91166094240059
+https://medicine-server-gokzn.run.goorm.io/?lat=37.57015053&lng=126.99191783399999
 
-```swift
+```json
 {
     "msg": "success",
     "result": [
@@ -93,9 +53,9 @@ https://medicine-server-gokzn.run.goorm.io/?lat=37.518379767474165&lng=126.91166
 }
 ```
 
-GET /:hpid
+`GET /:hpid`
 
-```swift
+```text
 {
     "name": string, // 이름
     "addr": string, // 주소
@@ -121,9 +81,9 @@ GET /:hpid
 }
 ```
 
-https://medicine-server-gokzn.run.goorm.io/CIDSE123
+https://medicine-server-gokzn.run.goorm.io/C1100001
 
-```swift
+```json
     {
     "msg": "success",
     "result": {
@@ -152,22 +112,52 @@ https://medicine-server-gokzn.run.goorm.io/CIDSE123
 }
 ```
 
+## Specification
+
+### Library ###
+- flask
+- uwsgi
+- mongoDB
+- pymongo
+- python
+
+### Open dataset ###
+1. 서울특별시*양천구*폐의약품\_수거함위치
+   (https://data.go.kr/data/15074902/fileData.do)
+2. 서울특별시 용산구\_폐의약품 수거가능위치 현황
+   (https://data.go.kr/data/15074891/fileData.do)
+3. 서울특별시 동대문구\_폐의약품 수거함 위치 현황
+   (https://data.go.kr/data/15074660/fileData.do)
+4. 서울특별시 광진구\_폐의약품 수거함 및 수집 참여 약국 현황
+   (https://data.go.kr/data/15075017/fileData.do)
+5. 서울특별시 동작구\_폐의약품 수거가능 약국현황
+   (https://data.go.kr/data/15077702/fileData.do)
+6. 서울특별시 강서구\_폐의약품 수거 약국 현황
+   (https://data.go.kr/data/15074907/fileData.do)
+7. 서울특별시 은평구\_폐의약품수거거점약국
+   (https://data.go.kr/data/15077807/fileData.do)
+8. 서울특별시 송파구\_폐의약품 수거 참여 약국 현황
+   (https://data.go.kr/data/15077652/fileData.do)
+9. 서울특별시 서대문구\_가정폐의약품 수거함 위치
+   (https://data.go.kr/data/15074855/fileData.do)
+10. 서울특별시 마포구\_불용의약품수거함
+   (https://data.go.kr/data/15074773/fileData.do)
+11. 국립중앙의료원\_전국 약국 정보 조회 서비스
+   (https://data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15000576)
+
 # 담당파트
 
 **이종아** [@jong-a LEE](https://github.com/whddk4415)
-
 - 팀장
 - Mongo db 연결 쿼리 제작
 - API 구현
 - 데이터 전처리
 
 **고동천** [@cheon4050](https://github.com/cheon4050)
-
 - 데이터 전처리
 - README 작성
 
 **김진영** [@Jin Kim](https://github.com/gimquokka)
-
 - API 구현
 - 데이터 전처리
 - 발표 및 README 작성
