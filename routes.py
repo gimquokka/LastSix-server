@@ -3,6 +3,8 @@ import pymongo
 from models.garbege import Garbege
 
 application = Flask(__name__)
+application.config['JSON_AS_ASCII'] = False
+
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 
 
@@ -20,6 +22,7 @@ def find_one(hpid):
             "_id": 0,
         },
     )
+    print(garbege)
     return {
         "msg": "success",
         "result": garbege,
@@ -38,7 +41,7 @@ def find_all_closest():
     lat = float(request.args.get("lat", 37.5666805))
     lng = float(request.args.get("lng", 126.9784147))
     limit = request.args.get('limit', 10)
-    closest_garbeges = garbege_model.find_all_closest(
+    closest_garbeges = garbege_model.find_all_closest(  
         lat,
         lng,
         {
