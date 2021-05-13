@@ -27,8 +27,15 @@ class Garbege:
         진영님께서 여기에 query만들어 주시면 됩니다.
         """
         return list(
-            self.col.find(
-                {},
+            self.col.find({
+                # locationt will replace into collection name
+                "location": {
+                    "$geoWithin": {
+                        # 1km 근방으로 조회 (map zoom in/out에 따라 수정 필요)
+                        "$centerSphere": [[lng, lat], 1 / 6378.1]
+                    }
+                }
+            },
                 projection,
             )
         )
