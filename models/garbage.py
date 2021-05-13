@@ -1,11 +1,11 @@
 """
-MongoDB garbege Collection Model
+MongoDB garbage Collection Model
 """
 
 
-class Garbege:
+class Garbage:
     def __init__(self, client):
-        self.col = client["medicine"]["garbege"]
+        self.col = client["medicine"]["garbage"]
 
     def find_one(
         self,
@@ -17,7 +17,14 @@ class Garbege:
             projection,
         )
 
-    def find_all_closest(self, lat, lng, projection=None, limit=10):
+    def find_all_closest(
+        self,
+        lat,
+        lng,
+        distance,
+        projection=None,
+        limit=10,
+    ):
         """
         진영님께서 여기에 query만들어 주시면 됩니다.
         """
@@ -41,7 +48,7 @@ class Garbege:
                     "location": {
                         "$near": {
                             "$geometry": {"type": "Point", "coordinates": [lng, lat]},
-                            "$maxDistance": 50,
+                            "$maxDistance": distance,
                         },
                     }
                 },

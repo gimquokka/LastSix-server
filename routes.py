@@ -1,17 +1,33 @@
 from flask import Flask, request
 import pymongo
-from models.garbege import Garbege
+from models.garbage import Garbage
 
 application = Flask(__name__)
 application.config['JSON_AS_ASCII'] = False
 
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 
+level_distance = {
+    1: 20,
+    2: 30,
+    3: 50,
+    4: 100,
+    5: 250,
+    6: 500,
+    7: 1000,
+    8: 2000,
+    9: 4000,
+    10: 8000,
+    11: 16000,
+    12: 32000,
+    13: 64000,
+    14: 128000
+}
 
 @application.route("/<string:hpid>", methods=["GET"])
 def find_one(hpid):
-    garbege_model = Garbege(client)
-    garbege = garbege_model.find_one(
+    garbage_model = Garbage(client)
+    garbage = garbage_model.find_one(
         hpid,
         {
             "name": 1,
@@ -22,10 +38,10 @@ def find_one(hpid):
             "_id": 0,
         },
     )
-    print(garbege)
+    
     return {
         "msg": "success",
-        "result": garbege,
+        "result": garbage,
     }
 
 
@@ -37,13 +53,15 @@ def find_all_closest():
             "msg": "failed",
             "detail": "lat and lng must be included in the query",
         }, 400
-    garbege_model = Garbege(client)
+    garbage_model = Garbage(client)
     lat = float(request.args.get("lat", 37.5666805))
     lng = float(request.args.get("lng", 126.9784147))
+    level = int(request.args.get('level', 4))
     limit = request.args.get('limit', 10)
-    closest_garbeges = garbege_model.find_all_closest(  
+    closest_garbages = garbage_model.find_all_closest(  
         lat,
         lng,
+        level_distance[level if level else 4],
         {
             "_id": 0,
             "name": 1,
@@ -54,15 +72,15 @@ def find_all_closest():
         limit
     )
     
-    for closest_garbege in closest_garbeges:
-        closest_garbege['isOfficial'] = closest_garbege.pop('is_official')
-        coordinates = closest_garbege.pop('location')['coordinates']
-        closest_garbege['lng'] = coordinates[0]
-        closest_garbege['lat'] = coordinates[1]
+    for closest_garbage in closest_garbages:
+        closest_garbage['isOfficial'] = closest_garbage.pop('is_official')
+        coordinates = closest_garbage.pop('location')['coordinates']
+        closest_garbage['lng'] = coordinates[0]
+        closest_garbage['lat'] = coordinates[1]
     
     return {
         "msg": "success",
-        "result": closest_garbeges,
+        "result": closest_garbages,
     }
 
 
