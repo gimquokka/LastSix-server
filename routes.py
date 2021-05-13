@@ -28,13 +28,15 @@ def find_one(hpid):
 
 @application.route("/", methods=["GET"])
 def find_all_closest():
-    if "lat" not in request.args and "lng" not in request.args:
+    # not (A and B) = not A or not B
+    if "lat" not in request.args or "lng" not in request.args:
         return {
             "msg": "failed",
             "detail": "lat and lng must be included in the query",
         }, 400
     garbege_model = Garbege(client)
-    lat, lng = float(request.args["lat"]), float(request.args["lng"])
+    lat = float(request.args.get("lat", 37.5666805))
+    lng = float(request.args.get("lng", 126.9784147))
     closest_garbeges = garbege_model.find_all_closest(
         lat,
         lng,
@@ -47,6 +49,10 @@ def find_all_closest():
             "is_official": 1,
         },
     )
+    
+    for closest_garbege in closest_garbeges:
+        closest_garbege['isOfficial'] = closest_garbege.pop('is_official')
+        
     return {
         "msg": "success",
         "result": closest_garbeges,
