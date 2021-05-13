@@ -1,18 +1,21 @@
 # 개요
 
+### 폐의약품으로 인한 환경 오염
+
 _Software Maestro_ 12기 공공데이터 활용 해커톤 LastSix 팀 (고동천, 김진영, 함초롬, 박효진, 진유진, 이종아)의 의약 폐기물 처리 안내 사이트 _"약! 그냥 버리게?"_ 웹 어플리케이션의 서버 프로젝트입니다.
 
 # 기술 스택
 
-```markdown
 ### 사용한 라이브러리
+```markdown
 
 - flask
 - mongoDB
 - pymongo
 - python
-
+```
 ### 활용한 공공데이터
+```markdown
 
 1. 서울특별시*양천구*폐의약품\_수거함위치
    (https://data.go.kr/data/15074902/fileData.do)
@@ -53,6 +56,8 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 LastSix 팀 (고동천
 
 ## API DOCS
 
+Base URI: https://medicine-server-gokzn.run.goorm.io/
+
 GET /?lat=''&lng=''
 
 ```swift
@@ -65,7 +70,7 @@ GET /?lat=''&lng=''
 }
 ```
 
-https://medicine-server-gokzn.run.goorm.io/?lat=37.518379767474165&lng=126.91166094240059
+예시: https://medicine-server-gokzn.run.goorm.io/?lat=37.518379767474165&lng=126.91166094240059
 
 ```swift
 {
@@ -110,7 +115,7 @@ GET /:hpid
 }
 ```
 
-https://medicine-server-gokzn.run.goorm.io/CIDSE123
+예시: https://medicine-server-gokzn.run.goorm.io/CIDSE123
 
 ```swift
     {
