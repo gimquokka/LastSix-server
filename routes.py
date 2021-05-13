@@ -24,6 +24,7 @@ level_distance = {
     14: 128000
 }
 
+
 @application.route("/<string:hpid>", methods=["GET"])
 def find_one(hpid):
     garbage_model = Garbage(client)
@@ -38,7 +39,7 @@ def find_one(hpid):
             "_id": 0,
         },
     )
-    
+
     return {
         "msg": "success",
         "result": garbage,
@@ -53,31 +54,34 @@ def find_all_closest():
             "msg": "failed",
             "detail": "lat and lng must be included in the query",
         }, 400
+
     garbage_model = Garbage(client)
+
     lat = float(request.args.get("lat", 37.5666805))
     lng = float(request.args.get("lng", 126.9784147))
     level = int(request.args.get('level', 4))
     limit = request.args.get('limit', 10)
-    closest_garbages = garbage_model.find_all_closest(  
+
+    closest_garbages = garbage_model.find_all_closest(
         lat,
         lng,
-        level_distance[level if level else 4],
+        level_distance[level],
+        limit,
         {
             "_id": 0,
             "name": 1,
             "location.coordinates": 1,
             "hpid": 1,
             "is_official": 1,
-        },
-        limit
+        }
     )
-    
+
     for closest_garbage in closest_garbages:
         closest_garbage['isOfficial'] = closest_garbage.pop('is_official')
         coordinates = closest_garbage.pop('location')['coordinates']
         closest_garbage['lng'] = coordinates[0]
         closest_garbage['lat'] = coordinates[1]
-    
+
     return {
         "msg": "success",
         "result": closest_garbages,

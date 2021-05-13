@@ -22,32 +22,22 @@ class Garbage:
         lat,
         lng,
         distance,
+        limit,
         projection=None,
-        limit=10,
     ):
-        """
-        진영님께서 여기에 query만들어 주시면 됩니다.
-        """
-        # return list(
-        #     self.col.find({
-        #         # locationt will replace into collection name
-        #         "location": {
-        #             "$geoWithin": {
-        #                 # 1km 근방으로 조회 (map zoom in/out에 따라 수정 필요)
-        #                 "$centerSphere": [[lng, lat], 500 / 6378.1]
-        #             }
-        #         }
-        #     },
-        #         projection,
-        #     ).limit(limit)
-        # )
         return list(
             self.col.find(
                 {
-                    # locationt will replace into collection name
+                    # location will replace into collection name
                     "location": {
                         "$near": {
-                            "$geometry": {"type": "Point", "coordinates": [lng, lat]},
+                            "$geometry": {
+                                "type": "Point",
+                                "coordinates": [
+                                    lng,
+                                    lat,
+                                ],
+                            },
                             "$maxDistance": distance,
                         },
                     }
