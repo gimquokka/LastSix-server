@@ -14,8 +14,7 @@
 - python
 
 ### 활용한 공공데이터 목록 ###
-1. 서울특별시_양천구_폐의약품_수거함위치
-(https://data.go.kr/data/15074902/fileData.do)
+1. [서울특별시_양천구_폐의약품_수거함위치](https://data.go.kr/data/15074902/fileData.do)
 2. 서울특별시 용산구_폐의약품 수거가능위치 현황 
 (https://data.go.kr/data/15074891/fileData.do)
 3. 서울특별시 동대문구_폐의약품 수거함 위치 현황 
@@ -43,7 +42,7 @@
 # 프로젝트 구조
 
 ```python
-├─ Readme.md
+├─ README.md
 ├─ modules
 │  ├─ __init__.py     
 │  └─ garbege.py (will replaced)
