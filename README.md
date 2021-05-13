@@ -26,7 +26,7 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 LastSix 팀 (고동천
 
 `GET /?lat=''&lng=''`
 
-```json
+```text
 {
     "name": string, //dutyName
     "lat": number, //위도
@@ -55,7 +55,7 @@ https://medicine-server-gokzn.run.goorm.io/?lat=37.57015053&lng=126.991917833999
 
 `GET /:hpid`
 
-```json
+```text
 {
     "name": string, // 이름
     "addr": string, // 주소
