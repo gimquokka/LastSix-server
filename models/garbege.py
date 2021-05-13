@@ -17,25 +17,34 @@ class Garbege:
             projection,
         )
 
-    def find_all_closest(
-        self,
-        lat,
-        lng,
-        projection=None,
-    ):
+    def find_all_closest(self, lat, lng, projection=None, limit=10):
         """
         진영님께서 여기에 query만들어 주시면 됩니다.
         """
+        # return list(
+        #     self.col.find({
+        #         # locationt will replace into collection name
+        #         "location": {
+        #             "$geoWithin": {
+        #                 # 1km 근방으로 조회 (map zoom in/out에 따라 수정 필요)
+        #                 "$centerSphere": [[lng, lat], 500 / 6378.1]
+        #             }
+        #         }
+        #     },
+        #         projection,
+        #     ).limit(limit)
+        # )
         return list(
-            self.col.find({
-                # locationt will replace into collection name
-                "location": {
-                    "$geoWithin": {
-                        # 1km 근방으로 조회 (map zoom in/out에 따라 수정 필요)
-                        "$centerSphere": [[lng, lat], 1 / 6378.1]
+            self.col.find(
+                {
+                    # locationt will replace into collection name
+                    "location": {
+                        "$near": {
+                            "$geometry": {"type": "Point", "coordinates": [lng, lat]},
+                            "$maxDistance": 50,
+                        },
                     }
-                }
-            },
+                },
                 projection,
-            )
+            ).limit(limit)
         )
