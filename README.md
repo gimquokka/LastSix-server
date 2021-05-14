@@ -20,7 +20,6 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 _LastSix_ 팀 <small>(
 
 - flask
 - wsgi
-- nginx
 - mongoDB
 - pymongo
 - nginx
