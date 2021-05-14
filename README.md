@@ -1,6 +1,8 @@
 # 약! 그냥 버리게? Web
 
-_Software Maestro_ 12기 공공데이터 활용 해커톤 LastSix 팀 (고동천, 김진영, 함초롬, 박효진, 진유진, 이종아)의 의약 폐기물 처리 안내 사이트 _"약! 그냥 버리게?"_ 웹 어플리케이션 프로젝트의 서버 프로젝트입니다. 
+_Software Maestro_ 12기 공공데이터 활용 해커톤 _LastSix_ 팀 <small>(고동천, 김진영, 함초롬, 박효진, 진유진, 이종아)</small>의 
+
+의약 폐기물 처리 안내 사이트 **_"약! 그냥 버리게?"_** 웹 어플리케이션의 서버 프로젝트입니다. 
 
 #### Do you want know detail project information?
 
@@ -10,154 +12,236 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 LastSix 팀 (고동천
 
 [의약 폐기물 환경오염 현황](https://www.notion.so/88fc34bcf5f94065904721c0f1bd08ec)
 
-## Structures
 
-```python
-├─ Readme.md
-├─ modules
-│  ├─ __init__.py
-│  └─ garbege.py (will replaced)
-├─ routes.py
-├─ wsgi.py
-└─ .gitignore
-```
-
-## API documentation
-
-`GET /?lat=''&lng=''`
-
-```text
-{
-    "name": string, //dutyName
-    "lat": number, //위도
-    "lng": number, //경도
-    "hpid": string, //고유 id 값
-    "isOfficial": boolean //공공데이터 내 장소인지
-}
-```
-
-https://medicine-server-gokzn.run.goorm.io/?lat=37.57015053&lng=126.99191783399999
-
-```json
-{
-    "msg": "success",
-    "result": [
-        {
-            "hpid": "CIDSE123",
-            "isOfficial": true,
-            "lat": 37.51856697499053,
-            "lng": 126.91216520641032,
-            "name": "medicine"
-        }
-    ]
-}
-```
-
-`GET /:hpid`
-
-```text
-{
-    "name": string, // 이름
-    "addr": string, // 주소
-    "tel" : string, // 전화번호
-    "start": object {
-        "mon": string, // 월요일 시작 시간 ex) "18:30"
-        "tue": string, // 화요일 시작 시간
-        "wed": string, // 수요일 시작 시간
-        "thur": string, // 목요일 시작 시간
-        "fri": string, // 금요일 시작 시간
-        "sat": string, // 토요일 시작 시간
-        "sun": string, // 일요일 시작 시간
-    },
-    "close" : {
-        "mon": string, // 월요일 종료 시간 ex) "18:30"
-        "tue": string, // 화요일 시작 시간
-        "wed": string, // 수요일 시작 시간
-        "thur": string, // 목요일 시작 시간
-        "fri": string, // 금요일 시작 시간
-        "sat": string, // 토요일 시작 시간
-        "sun": string, // 일요일 시작 시간
-    }
-}
-```
-
-https://medicine-server-gokzn.run.goorm.io/C1100001
-
-```json
-    {
-    "msg": "success",
-    "result": {
-        "addr": "address",
-        "close": {
-            "fri": "09:30",
-            "mon": "09:30",
-            "sat": "09:30",
-            "sun": "09:30",
-            "thur": "09:30",
-            "tue": "09:30",
-            "wed": "09:30"
-        },
-        "name": "medicine",
-        "start": {
-            "fri": "09:30",
-            "mon": "09:30",
-            "sat": "09:30",
-            "sun": "09:30",
-            "thur": "09:30",
-            "tue": "09:30",
-            "wed": "09:30"
-        },
-        "tel": "02-123-1231"
-    }
-}
-```
 
 ## Specification
 
-### Library ###
+### Library
+
 - flask
-- uwsgi
+- wsgi
+- nginx
 - mongoDB
 - pymongo
-- python
+- nginx
 
-### Open dataset ###
-1. 서울특별시*양천구*폐의약품\_수거함위치
-   (https://data.go.kr/data/15074902/fileData.do)
-2. 서울특별시 용산구\_폐의약품 수거가능위치 현황
-   (https://data.go.kr/data/15074891/fileData.do)
-3. 서울특별시 동대문구\_폐의약품 수거함 위치 현황
-   (https://data.go.kr/data/15074660/fileData.do)
-4. 서울특별시 광진구\_폐의약품 수거함 및 수집 참여 약국 현황
-   (https://data.go.kr/data/15075017/fileData.do)
-5. 서울특별시 동작구\_폐의약품 수거가능 약국현황
-   (https://data.go.kr/data/15077702/fileData.do)
-6. 서울특별시 강서구\_폐의약품 수거 약국 현황
-   (https://data.go.kr/data/15074907/fileData.do)
-7. 서울특별시 은평구\_폐의약품수거거점약국
-   (https://data.go.kr/data/15077807/fileData.do)
-8. 서울특별시 송파구\_폐의약품 수거 참여 약국 현황
-   (https://data.go.kr/data/15077652/fileData.do)
-9. 서울특별시 서대문구\_가정폐의약품 수거함 위치
-   (https://data.go.kr/data/15074855/fileData.do)
-10. 서울특별시 마포구\_불용의약품수거함
-   (https://data.go.kr/data/15074773/fileData.do)
-11. 국립중앙의료원\_전국 약국 정보 조회 서비스
-   (https://data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15000576)
+### Dataset
+
+1. [서울특별시*양천구*폐의약품\_수거함위치](https://data.go.kr/data/15074902/fileData.do)
+2. [서울특별시 용산구\_폐의약품 수거가능위치 현황](https://data.go.kr/data/15074891/fileData.do)
+3. [서울특별시 동대문구\_폐의약품 수거함 위치 현황](https://data.go.kr/data/15074660/fileData.do)
+4. [서울특별시 광진구\_폐의약품 수거함 및 수집 참여 약국 현황](https://data.go.kr/data/15075017/fileData.do)
+5. [서울특별시 동작구\_폐의약품 수거가능 약국현황](https://data.go.kr/data/15077702/fileData.do)
+6. [서울특별시 강서구\_폐의약품 수거 약국 현황](https://data.go.kr/data/15074907/fileData.do)
+7. [서울특별시 은평구\_폐의약품수거거점약국](https://data.go.kr/data/15077807/fileData.do)
+8. [서울특별시 송파구\_폐의약품 수거 참여 약국 현황](https://data.go.kr/data/15077652/fileData.do)
+9. [서울특별시 서대문구\_가정폐의약품 수거함 위치](https://data.go.kr/data/15074855/fileData.do)
+10. [서울특별시 마포구\_불용의약품수거함](https://data.go.kr/data/15074773/fileData.do)
+11. [국립중앙의료원\_전국 약국 정보 조회 서비스](https://data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15000576)
+
+
+
+## Structures
+
+```python
+├─ README.md
+├─ models
+│  ├─ __init__.py
+│  └─ garbage.py (will replaced)
+├─ routes.py
+├─ server_run.sh
+├─ wsgi.py
+├─ wsgi.ini
+└─ .gitignore
+```
+
+
+
+## API documentation
+
+### Table of contents
+
+- 폐의약품 수거 약국 위치정보
+  - [주변 약국 위치정보](주변 약국 위치정보)
+  - [특정 약국 영업정보]()
+
+
+
+### 주변 약국 위치정보
+
+#### Description
+
+유저 반경 5km의 폐의약품 수거 약국정보를 가까운 순서대로 반환합니다.
+
+#### METHOD
+
+`GET`
+
+#### URL
+
+`/?lat=<float: latitude>&lng=<float: longitude>`
+
+#### URL EXAMPLE
+
+`GET`  ` /?lat=37.5183&lng=126.9116`
+
+#### QUERY STRING
+
+| name | type   | require                   | description          |
+| ---- | ------ | ------------------------- | -------------------- |
+| lat  | number | 필수 (default: 37.5666)   | 유저 현위치의 위도값 |
+| lng  | number | 필수  (default: 126.9784) | 유저 현위치의 경도값 |
+
+> 리퀘스트의 url로 유저 현위치의 위도, 경도값을 전달합니다.
+
+### RESPONSE
+
+#### RESPONSE BODY
+
+| name       | type    | require | description            |
+| ---------- | ------- | ------- | ---------------------- |
+| name       | string  | 필수    | 유저 현위치 지명       |
+| lat        | number  | 필수    | 위도                   |
+| lng        | number  | 필수    | 경도                   |
+| hpid       | string  | 필수    | 고유 id 값             |
+| isOfficial | boolean | 필수    | 공공데이터 내 장소인지 |
+
+> 요청에 대한 반환으로 주변 약국의 정보들을 반환합니다.
+
+#### success
+
+**HTTP Status code : 200 success**
+
+```json
+{"msg":"success","result":[{"hpid":"C1101142","isOfficial":false,"lat":37.518856184099995,"lng":126.9091119011,"name":"우신약국"},{"hpid":"C1104798","isOfficial":false,"lat":37.51927632914123,"lng":126.90715217610938,"name":"21세기신천지약국"},{"hpid":"C1102398","isOfficial":false,"lat":37.51972330525589,"lng":126.90726023739019,"name":"천우약국"},{"hpid":"C1108265","isOfficial":false,"lat":37.51688299656223,"lng":126.90681127166714,"name":"행복한수약국"},{"hpid":"C1106994","isOfficial":false,"lat":37.5169621597,"lng":126.906652812,"name":"더블유스토어아름다운약국"},{"hpid":"C1101980","isOfficial":false,"lat":37.51412251894385,"lng":126.91176898165945,"name":"공원온누리약국"},{"hpid":"C1101554","isOfficial":false,"lat":37.5173475954,"lng":126.9064080018,"name":"금강온누리약국"},{"hpid":"C1103199","isOfficial":false,"lat":37.5183625742201,"lng":126.90617948155399,"name":"나은약국"},{"hpid":"C1102073","isOfficial":false,"lat":37.5183455428,"lng":126.9059497617,"name":"동보약국"},{"hpid":"C1107905","isOfficial":false,"lat":37.522770652800006,"lng":126.9097813715,"name":"온누리정문약국"}]}
+```
+
+#### fail
+
+**HTTP Status code : 400 Bad Request**
+
+```json
+{
+    "status": 400,
+    "msg": "failed",
+    "detail": "lat and lng must be included in the query"
+}
+```
+
+| name    | type   | description      |
+| ------- | ------ | ---------------- |
+| status  | number | HTTP status code |
+| message | string | 에러 메시지      |
+| detail  | string | 에러 원인 상세   |
+
+
+
+---
+
+### 특정 약국 영업정보
+
+#### Description
+
+특정 약국의 약국명, 연락처 및 요일별 운영시간 정보를 반환합니다.
+
+#### METHOD
+
+`GET`
+
+#### URL
+
+`/hpid = <string>`
+
+#### URL EXAMPLE
+
+`GET`  ` /C1108718`
+
+#### QUERY STRING
+
+| name | type   | require | description    |
+| ---- | ------ | ------- | -------------- |
+| hpid | string | 필수    | 약국의 hpid 값 |
+
+> url로 특정 약국의 hpid 값을 보냅니다.
+
+### RESPONSE
+
+#### RESPONSE BODY
+
+| name                     | type   | require | description                           |
+| ------------------------ | ------ | ------- | ------------------------------------- |
+| name                     | string | 필수    | 약국명                                |
+| addr                     | string | 필수    | 상세 주소                             |
+| tel                      | string | 필수    | 연락처                                |
+| 'start': {'mon' ~ 'sun'} | string | 필수    | 약국의 월요일 ~ 일요일  영업시작 시각 |
+| 'close': {'mon' ~ 'sun'} | string | 필수    | 약국의 월요일 ~ 일요일  영업종료 시각 |
+
+> 요청에 대한 반환으로 hpid 해당 약국의 운영정보를 반환 합니다.
+
+#### success
+
+**HTTP Status code : 200 success**
+
+```json
+{
+  "msg":"success",
+  "result":{           
+   				 "name":"13층약국",
+   				 "addr":"서울특별시 중구 서소문로 116, 유원빌딩 1304호 (서소문동)",
+    			 "tel":"070-7718-1316",
+           "close":{"fri":"18:30",
+                    "mon":"18:30",
+                    "sat":"휴무일",
+                    "sun":"휴무일",
+                    "thur":"18:30",
+                    "tue":"18:30",
+                    "wed":"18:30"},
+           ,
+           "start":{"fri":"09:00",
+                    "mon":"09:00",
+                    "sat":"휴무일",
+                    "sun":"휴무일",
+                    "thur":"09:00",
+                    "tue":"09:00",
+                    "wed":"09:00"},
+           }
+}
+```
+
+#### fail
+
+**HTTP Status code : 400 Bad Request**
+
+```json
+{
+    "status": 500,
+    "msg": "internal server error",
+}
+```
+
+| name    | type   | description      |
+| ------- | ------ | ---------------- |
+| status  | number | HTTP status code |
+| message | string | 에러 메시지      |
+
+
 
 # 담당파트
 
 **이종아** [@jong-a LEE](https://github.com/whddk4415)
+
 - 팀장
 - Mongo db 연결 쿼리 제작
 - API 구현
 - 데이터 전처리
 
 **고동천** [@cheon4050](https://github.com/cheon4050)
+
 - 데이터 전처리
 - README 작성
 
 **김진영** [@Jin Kim](https://github.com/gimquokka)
+
 - API 구현
 - 데이터 전처리
 - 발표 및 README 작성
