@@ -27,17 +27,17 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 _LastSix_ 팀 <small>(
 
 ### Dataset
 
-1. [서울특별시*양천구*폐의약품\_수거함위치](https://data.go.kr/data/15074902/fileData.do)
-2. [서울특별시 용산구\_폐의약품 수거가능위치 현황](https://data.go.kr/data/15074891/fileData.do)
-3. [서울특별시 동대문구\_폐의약품 수거함 위치 현황](https://data.go.kr/data/15074660/fileData.do)
-4. [서울특별시 광진구\_폐의약품 수거함 및 수집 참여 약국 현황](https://data.go.kr/data/15075017/fileData.do)
-5. [서울특별시 동작구\_폐의약품 수거가능 약국현황](https://data.go.kr/data/15077702/fileData.do)
-6. [서울특별시 강서구\_폐의약품 수거 약국 현황](https://data.go.kr/data/15074907/fileData.do)
-7. [서울특별시 은평구\_폐의약품수거거점약국](https://data.go.kr/data/15077807/fileData.do)
-8. [서울특별시 송파구\_폐의약품 수거 참여 약국 현황](https://data.go.kr/data/15077652/fileData.do)
-9. [서울특별시 서대문구\_가정폐의약품 수거함 위치](https://data.go.kr/data/15074855/fileData.do)
-10. [서울특별시 마포구\_불용의약품수거함](https://data.go.kr/data/15074773/fileData.do)
-11. [국립중앙의료원\_전국 약국 정보 조회 서비스](https://data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15000576)
+1. [서울특별시 양천구 폐의약품 수거함위치](https://data.go.kr/data/15074902/fileData.do)
+2. [서울특별시 용산구 폐의약품 수거가능위치 현황](https://data.go.kr/data/15074891/fileData.do)
+3. [서울특별시 동대문구 폐의약품 수거함 위치 현황](https://data.go.kr/data/15074660/fileData.do)
+4. [서울특별시 광진구 폐의약품 수거함 및 수집 참여 약국 현황](https://data.go.kr/data/15075017/fileData.do)
+5. [서울특별시 동작구 폐의약품 수거가능 약국현황](https://data.go.kr/data/15077702/fileData.do)
+6. [서울특별시 강서구 폐의약품 수거 약국 현황](https://data.go.kr/data/15074907/fileData.do)
+7. [서울특별시 은평구 폐의약품수거거점약국](https://data.go.kr/data/15077807/fileData.do)
+8. [서울특별시 송파구 폐의약품 수거 참여 약국 현황](https://data.go.kr/data/15077652/fileData.do)
+9. [서울특별시 서대문구 가정폐의약품 수거함 위치](https://data.go.kr/data/15074855/fileData.do)
+10. [서울특별시 마포구 불용의약품수거함](https://data.go.kr/data/15074773/fileData.do)
+11. [국립중앙의료원 전국 약국 정보 조회 서비스](https://data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15000576)
 
 
 
@@ -196,7 +196,7 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 _LastSix_ 팀 <small>(
                     "thur":"18:30",
                     "tue":"18:30",
                     "wed":"18:30"},
-           ,
+           },
            "start":{"fri":"09:00",
                     "mon":"09:00",
                     "sat":"휴무일",
@@ -231,6 +231,7 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 _LastSix_ 팀 <small>(
 **이종아** [@jong-a LEE](https://github.com/whddk4415)
 
 - 팀장
+- 프로젝트 기본 세팅
 - Mongo db 연결 쿼리 제작
 - API 구현
 - 데이터 전처리
