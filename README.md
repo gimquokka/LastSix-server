@@ -113,7 +113,21 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 _LastSix_ 팀 <small>(
 **HTTP Status code : 200 success**
 
 ```json
-{"msg":"success","result":[{"hpid":"C1101142","isOfficial":false,"lat":37.518856184099995,"lng":126.9091119011,"name":"우신약국"},{"hpid":"C1104798","isOfficial":false,"lat":37.51927632914123,"lng":126.90715217610938,"name":"21세기신천지약국"},{"hpid":"C1102398","isOfficial":false,"lat":37.51972330525589,"lng":126.90726023739019,"name":"천우약국"},{"hpid":"C1108265","isOfficial":false,"lat":37.51688299656223,"lng":126.90681127166714,"name":"행복한수약국"},{"hpid":"C1106994","isOfficial":false,"lat":37.5169621597,"lng":126.906652812,"name":"더블유스토어아름다운약국"},{"hpid":"C1101980","isOfficial":false,"lat":37.51412251894385,"lng":126.91176898165945,"name":"공원온누리약국"},{"hpid":"C1101554","isOfficial":false,"lat":37.5173475954,"lng":126.9064080018,"name":"금강온누리약국"},{"hpid":"C1103199","isOfficial":false,"lat":37.5183625742201,"lng":126.90617948155399,"name":"나은약국"},{"hpid":"C1102073","isOfficial":false,"lat":37.5183455428,"lng":126.9059497617,"name":"동보약국"},{"hpid":"C1107905","isOfficial":false,"lat":37.522770652800006,"lng":126.9097813715,"name":"온누리정문약국"}]}
+{
+  "msg":"success",
+  "result":[
+    {"hpid":"C1101142","isOfficial":false,"lat":37.518856184099995,"lng":126.9091119011,"name":"우신약국"},
+    {"hpid":"C1104798","isOfficial":false,"lat":37.51927632914123,"lng":126.90715217610938,"name":"21세기신천지약국"},
+    {"hpid":"C1102398","isOfficial":false,"lat":37.51972330525589,"lng":126.90726023739019,"name":"천우약국"},
+    {"hpid":"C1108265","isOfficial":false,"lat":37.51688299656223,"lng":126.90681127166714,"name":"행복한수약국"},
+    {"hpid":"C1106994","isOfficial":false,"lat":37.5169621597,"lng":126.906652812,"name":"더블유스토어아름다운약국"},
+    {"hpid":"C1101980","isOfficial":false,"lat":37.51412251894385,"lng":126.91176898165945,"name":"공원온누리약국"},
+    {"hpid":"C1101554","isOfficial":false,"lat":37.5173475954,"lng":126.9064080018,"name":"금강온누리약국"},
+    {"hpid":"C1103199","isOfficial":false,"lat":37.5183625742201,"lng":126.90617948155399,"name":"나은약국"},
+    {"hpid":"C1102073","isOfficial":false,"lat":37.5183455428,"lng":126.9059497617,"name":"동보약국"},
+    {"hpid":"C1107905","isOfficial":false,"lat":37.522770652800006,"lng":126.9097813715,"name":"온누리정문약국"}
+  ]
+}
 ```
 
 #### fail
