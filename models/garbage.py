@@ -21,7 +21,6 @@ class Garbage:
         self,
         lat,
         lng,
-        distance,
         limit,
         projection=None,
     ):
@@ -38,7 +37,6 @@ class Garbage:
                                     lat,
                                 ],
                             },
-                            "$maxDistance": distance,
                         },
                     }
                 },

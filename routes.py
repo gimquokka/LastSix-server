@@ -1,11 +1,15 @@
 from flask import Flask, request
 import pymongo
 from models.garbage import Garbage
+from flask_cors import CORS
+import os
 
 application = Flask(__name__)
+CORS(application, resources={r"/*": {"origins": "*"}})
+
 application.config['JSON_AS_ASCII'] = False
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")
+client = pymongo.MongoClient(os.environ['MONGO_HOST'])
 
 level_distance = {
     1: 20,
@@ -35,7 +39,7 @@ def find_one(hpid):
             "addr": 1,
             "tel": 1,
             "start": 1,
-            "end": 1,
+            "close": 1,
             "_id": 0,
         },
     )
@@ -59,13 +63,11 @@ def find_all_closest():
 
     lat = float(request.args.get("lat", 37.5666805))
     lng = float(request.args.get("lng", 126.9784147))
-    level = int(request.args.get('level', 4))
-    limit = request.args.get('limit', 10)
+    limit = int(request.args.get('limit', 10))
 
     closest_garbages = garbage_model.find_all_closest(
         lat,
         lng,
-        level_distance[level],
         limit,
         {
             "_id": 0,
