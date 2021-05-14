@@ -79,20 +79,21 @@ _Software Maestro_ 12기 공공데이터 활용 해커톤 _LastSix_ 팀 <small>(
 
 #### URL
 
-`/?lat=<float: latitude>&lng=<float: longitude>`
+`/?lat=<float: latitude>&lng=<float: longitude>&limit=<int: 리스트로 받을 최대 개수 default=10`
 
 #### URL EXAMPLE
 
-`GET`  ` /?lat=37.5183&lng=126.9116`
+`GET`  ` /?lat=37.5183&lng=126.9116&limit=10`
 
 #### QUERY STRING
 
-| name | type   | require                   | description          |
-| ---- | ------ | ------------------------- | -------------------- |
-| lat  | number | 필수 (default: 37.5666)   | 유저 현위치의 위도값 |
-| lng  | number | 필수  (default: 126.9784) | 유저 현위치의 경도값 |
+| name   | type   | require                   | description            |
+| ------ | ------ | ------------------------- | ---------------------- |
+| lat    | number | 필수 (default: 37.5666)   | 유저 현위치의 위도값    |
+| lng    | number | 필수  (default: 126.9784) | 유저 현위치의 경도값    |
+| limit  | number | 옵션  (default: 10)       | 리스트로 받을 최대 개수 |
 
-> 리퀘스트의 url로 유저 현위치의 위도, 경도값을 전달합니다.
+> 리퀘스트의 url로 유저 현위치의 위도, 경도값을 전달합니다. 필요하다면 limit값도 전달합니다.
 
 ### RESPONSE
 
